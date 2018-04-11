@@ -7,19 +7,20 @@ public class Movimiento : MonoBehaviour {
 	public float speed;
 	public Vector3 direction;
 	public Vector3 limit;
-	public Rigidbody miRigidBody;
+	public Rigidbody playerRB;
 	public Vector3 posicionInicial;
 
 	// Use this for initialization
 	void Start () {
-		miRigidBody = GetComponent<Rigidbody> ();
-		posicionInicial = transform.position;
-	}
+        posicionInicial = transform.position;
+        playerRB = GetComponent<Rigidbody>();
+
+    }
 
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey (KeyCode.A) && transform.position.x > -limit.x) {
+        if (Input.GetKey (KeyCode.A) && transform.position.x > -limit.x) {
 			transform.Translate (Vector3.left * speed * Time.deltaTime);
 		}
 
@@ -34,6 +35,9 @@ public class Movimiento : MonoBehaviour {
 		if (Input.GetKey (KeyCode.S) && transform.position.z > -limit.z) {
 			transform.Translate (Vector3.back * speed * Time.deltaTime);
 		}
+        if (Input.GetKeyDown(KeyCode.Space)){
+            transform.position = posicionInicial;
+        }
 
 	}
 
@@ -41,9 +45,9 @@ public class Movimiento : MonoBehaviour {
 	{
 		if (col.gameObject.CompareTag("Wall"))
 		{
-			miRigidBody.MovePosition (posicionInicial);
-			Debug.Log ("awake");
-		}
+            transform.position = posicionInicial;
+            Debug.Log("Intentalo de nuevo...");
+        }
 		else if (col.gameObject.CompareTag("Exit"))
 		{
 			Debug.Log ("Felicidades! Ganaste!");
