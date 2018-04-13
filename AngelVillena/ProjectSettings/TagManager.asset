@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Exit
+  - Follower
   layers:
   - Default
   - TransparentFX

@@ -35,9 +35,6 @@ public class Movimiento : MonoBehaviour {
 		if (Input.GetKey (KeyCode.S) && transform.position.z > -limit.z) {
 			transform.Translate (Vector3.back * speed * Time.deltaTime);
 		}
-        if (Input.GetKeyDown(KeyCode.Space)){
-            transform.position = posicionInicial;
-        }
 
 	}
 
