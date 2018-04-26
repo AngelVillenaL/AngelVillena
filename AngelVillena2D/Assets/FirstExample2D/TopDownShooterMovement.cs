@@ -13,7 +13,6 @@ public class TopDownShooterMovement : MonoBehaviour {
     int colorIndex = 0;
 
     public SpriteRenderer spriteRenderer;
-
     public Transform sightDirection;
 
     class Axis {
@@ -43,15 +42,14 @@ public class TopDownShooterMovement : MonoBehaviour {
 
         transform.Translate (Vector3.right * GetAxis ("Horizontal") * speed * Time.deltaTime, Space.World);
         transform.Translate (Vector3.up * GetAxis ("Vertical") * speed * Time.deltaTime, Space.World);
-        transform.Rotate (Vector3.back * GetAxis ("Arrow_H") * angularVelocity * Time.deltaTime);
-        //sightDirection.Rotate (Vector3.back * GetAxis ("Arrow_H")) * angularVelocity;
+        //sightDirection.Rotate (Vector3.back * GetAxis ("Arrow_H") * angularVelocity * Time.deltaTime);
 
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
         mouseWorldPos.z = transform.position.z;
         Debug.DrawLine (transform.position, mouseWorldPos, Color.red);
-        transform.up = (mouseWorldPos - transform.position).normalized;
+        sightDirection.up = (mouseWorldPos - transform.position).normalized;
 
-        float scrollWheelValue = Input.GetAxis("Mouse ScrollWheel");
+        float scrollWheelValue = Input.GetAxis ("Mouse ScrollWheel");
 
         if (scrollWheelValue != 0) {
             MoveColor (scrollWheelValue);
@@ -60,36 +58,28 @@ public class TopDownShooterMovement : MonoBehaviour {
         if (Input.GetMouseButtonDown (0)) {
             Shoot ();
         }
-    }
-
+	}
 
     void Shoot () {
-        SpriteRenderer tempRenderer = Instantiate (bullet, sightDirection.Find ("Cannon").position, sightDirection.rotation).GetComponent<SpriteRenderer>();
+        SpriteRenderer tempRenderer = Instantiate (bullet, sightDirection.Find ("Cannon").position, sightDirection.rotation).GetComponent<SpriteRenderer> ();
         tempRenderer.color = spriteRenderer.color;
         Destroy (tempRenderer.gameObject, 2);
     }
 
     void MoveColor (float moveValue) {
-            moveValue *= 10;
-            int tempValue = colorIndex + (int)moveValue;
-            for (int i = 0; i < Mathf.Abs(tempValue); i++) {
-                colorIndex += 1 * (int)Mathf.Sign(moveValue);
-                if (colorIndex >= colors.Count) {
-                    colorIndex = 0;
-                } else if (colorIndex < 0) {
-                colorIndex = colors.Count - 1;
-                }
-
-            /*if (tempValue >= colors.Count - 1) {
+        moveValue *= 10;
+        for (int i = 0; i < Mathf.Abs(moveValue); i++) {
+            colorIndex += 1 * (int) Mathf.Sign (moveValue);
+            if (colorIndex >= colors.Count) {
                 colorIndex = 0;
-            } else if (tempValue < 0) {
+            } else if (colorIndex < 0) {
                 colorIndex = colors.Count - 1;
-             }   
-             */
+            }
         }
+        spriteRenderer.color = colors[colorIndex];
     }
 
-        int GetAxis (string axisName) {
+    int GetAxis (string axisName) {
         Axis axis = axisList.Find (target => target.name == axisName);
         int axisValue = 0;
         if (Input.GetKey (axis.negative)) {
