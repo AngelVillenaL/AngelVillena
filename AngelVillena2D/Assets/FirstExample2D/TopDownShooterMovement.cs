@@ -11,10 +11,13 @@ public class TopDownShooterMovement : MonoBehaviour {
 
     public List<Color> colors = new List<Color> ();
     int colorIndex = 0;
+    public int ColorIndex { get {return colorIndex; } }
 
     public SpriteRenderer spriteRenderer;
-
     public Transform sightDirection;
+    public Transform sightObject;
+
+    public LineRenderer sightLine;
 
     class Axis {
         public string name;
@@ -48,7 +51,11 @@ public class TopDownShooterMovement : MonoBehaviour {
         Vector3 mouseWorlPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorlPos.z = transform.position.z;
         Debug.DrawLine(transform.position, mouseWorlPos, Color.red);
+
+        sightDirection.up = (mouseWorlPos - transform.position).normalized;
         transform.up = (mouseWorlPos - transform.position).normalized;
+        sightObject.position = (Vector3.Distance(mouseWorlPos, transform.position) >= 1) ? mouseWorlPos : transform.position + sightDirection.up;
+        sightLine.SetPositions (new Vector3[] { transform.position, transform.position + sightDirection.up * 3});
 
         float scollWhellValue = Input.GetAxis("Mouse ScrollWheel");
 
