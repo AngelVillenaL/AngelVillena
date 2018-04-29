@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ShooterHUD : MonoBehaviour {
 
-
     public TopDownShooterMovement player;
     Text debugText;
     public float spacing;
@@ -13,27 +12,26 @@ public class ShooterHUD : MonoBehaviour {
     public GameObject weaponPrefab;
     int lastColorIndex;
 
-    // Use this for initialization
-    void Start () {
-        debugText = transform.Find ("DebugText").GetComponent<Text>();
-        collection = transform.Find("WeaponCollection");
+	// Use this for initialization
+	void Start () {
+        debugText = transform.Find ("DebugText").GetComponent<Text> ();
+        collection = transform.Find ("WeaponCollection");
         for (int i = 0; i < player.colors.Count; i++) {
-            Instantiate(weaponPrefab, collection).GetComponent<Image>().color = player.colors[];
-            collection.GetChild(i).position = new Vector3(spacing* i, 0, 0);
+            Instantiate (weaponPrefab, collection).GetComponent<Image>().color = player.colors[i];
+            collection.GetChild (i).localPosition = new Vector3 (spacing * i, 0, 0);
         }
+        collection.GetChild (player.ColorIndex).GetComponent<RectTransform> ().sizeDelta = new Vector2 (50, 50);
         lastColorIndex = player.ColorIndex;
-    }
+	}
 	
 	// Update is called once per frame
 	void Update () {
-        //debugText.text = "Weapon Index" + player.ColorIndex;
-        if(lastColorIndex != player.ColorIndex) 
-        Transform targetObject = transform.Find ("WeaponCollection").GetChild(0);
-        float targetSize = (if == player)
-        collection.GetChild(player.ColorIndex).GetComponent<RectTransform>;
-		
-	}
-    void LateUpdate () {
+        if (lastColorIndex != player.ColorIndex) {
+            for (int i = 0; i < collection.childCount; i++) {
+                float targetSize = (i == player.ColorIndex) ? 50 : 30;
+                collection.GetChild (i).GetComponent<RectTransform> ().sizeDelta = new Vector2 (targetSize, targetSize);
+            }
+        }
         lastColorIndex = player.ColorIndex;
     }
 }
