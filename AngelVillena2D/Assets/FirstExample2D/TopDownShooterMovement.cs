@@ -76,6 +76,9 @@ public class TopDownShooterMovement : MonoBehaviour {
         SpriteRenderer tempRenderer = Instantiate (bullet, sightDirection.Find ("Cannon").position, sightDirection.rotation).GetComponent<SpriteRenderer> ();
         tempRenderer.color = spriteRenderer.color;
         Destroy (tempRenderer.gameObject, 2);
+        TopDownCamMovement camera = Camera.main.GetComponent<TopDownCamMovement> ();
+        camera.speed = 1;
+
     }
 
     void MoveColor (float moveValue) {
