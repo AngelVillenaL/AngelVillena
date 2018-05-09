@@ -20,6 +20,8 @@ public class TopDownShooterMovement : MonoBehaviour {
     public LineRenderer sightLine;
     Vector3 mouseWorldPos;
 
+    private GameObject Wall;
+
     class Axis {
         public string name;
         public KeyCode negative;
@@ -69,7 +71,13 @@ public class TopDownShooterMovement : MonoBehaviour {
 	}
 
     void LateUpdate () {
-        sightObject.position = (Vector3.Distance (mouseWorldPos, transform.position) >= 1) ? mouseWorldPos : transform.position + sightDirection.up;
+    sightObject.position = (Vector3.Distance (mouseWorldPos, transform.position) >= 1) ? mouseWorldPos : transform.position + sightDirection.up;
+        if (Wall) {
+            Vector3 dir = Wall.transform.position - transform.position;
+            transform.position -= dir * 0.4f;
+            Wall = null;
+        }
+
     }
 
     void Shoot () {
@@ -111,4 +119,13 @@ public class TopDownShooterMovement : MonoBehaviour {
             Debug.Log ("Block collision!");
         }
     }
+    void OnCollisionEnter2D (Collision2D collision) {
+        GameObject Wall = collision.gameObject;
+        if (collision.gameObject.CompareTag("Wall")) {
+            Debug.Log("Wall!");
+
+            Wall = collision.gameObject;
+            }
+    }
+
 }
