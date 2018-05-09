@@ -60,7 +60,7 @@ public class TopDownShooterMovement : MonoBehaviour {
         float scrollWheelValue = Input.GetAxis ("Mouse ScrollWheel");
 
         if (scrollWheelValue != 0) {
-            MoveColor (scrollWheelValue);
+            MoveColor (-scrollWheelValue);
         }
 
         if (Input.GetMouseButtonDown (0)) {
@@ -69,7 +69,7 @@ public class TopDownShooterMovement : MonoBehaviour {
 	}
 
     void LateUpdate () {
-        sightObject.position = (Vector3.Distance(mouseWorldPos, transform.position) >= 1) ? mouseWorldPos : transform.position + sightDirection.up;
+        sightObject.position = (Vector3.Distance (mouseWorldPos, transform.position) >= 1) ? mouseWorldPos : transform.position + sightDirection.up;
     }
 
     void Shoot () {
@@ -77,8 +77,8 @@ public class TopDownShooterMovement : MonoBehaviour {
         tempRenderer.color = spriteRenderer.color;
         Destroy (tempRenderer.gameObject, 2);
         TopDownCamMovement camera = Camera.main.GetComponent<TopDownCamMovement> ();
-        camera.speed = 1;
-
+        camera.speed = 25;
+        camera.impulseDirection = sightDirection.up;
     }
 
     void MoveColor (float moveValue) {

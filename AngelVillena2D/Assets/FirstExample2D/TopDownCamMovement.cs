@@ -10,43 +10,41 @@ public class TopDownCamMovement : MonoBehaviour {
     public float distance = 1;
     public float maxDistanceDelta = 1;
 
-    public float speed;
-    float deaccel = 15;
+    public float speed = 0;
+    float deaccel = 45;
     public Vector3 impulseDirection;
 
 	// Use this for initialization
 	void Start () {
-        targetScript =targetObject.GetComponent<TopDownShooterMovement> ();
+        targetScript = targetObject.GetComponent<TopDownShooterMovement> ();
+	}
 
-    }
-	
     void Update () {
         if (speed != 0) {
-
+            speed = Mathf.MoveTowards (speed, 0, deaccel * Time.deltaTime);
         }
     }
 
-
-    // Update is called once per frame
-    void LateUpdate () {
-        Vector3 targetCamPos = targetObject.position + (Vector3.up * distance);
-        Vector3  currentCamPos = transform.position;
+	// Update is called once per frame
+	void LateUpdate () {
+        Vector3 targetCamPos = targetObject.position + (targetScript.sightDirection.up * distance);
+        Vector3 currentCamPos = transform.position;
         targetCamPos.z = transform.position.z;
-        float currentDistance = Vector3.Distance(currentCamPos, targetCamPos);
-        transform.position = Vector3.MoveTowards(transform.position, targetCamPos, maxDistanceDelta * currentDistance * Time.deltaTime);
+        float currentDistance = Vector3.Distance (currentCamPos, targetCamPos);
 
+        transform.Translate (impulseDirection * speed * Time.deltaTime);
+
+        transform.position = Vector3.MoveTowards (transform.position, targetCamPos, maxDistanceDelta * currentDistance * Time.deltaTime);
 	}
 
     void OnDrawGizmos () {
-        //Draw a yellow sphere at the transform's position
         Gizmos.color = targetColor;
-        Vector3 targetViewPos = (targetScript !=null) ? targetObject.position + (targetScript.sightDirection.up * distance) : Vector3.zero;
-        Gizmos.DrawWireSphere(targetViewPos, 0.5f);
+        Vector3 targetViewPos = (targetScript != null) ? targetObject.position + (targetScript.sightDirection.up * distance) : Vector3.zero;
+        Gizmos.DrawWireSphere (targetViewPos, 0.5f);
         Gizmos.color = Color.red;
         Vector3 currentViewPos = new Vector3 (transform.position.x, transform.position.y, 0);
-        Gizmos.DrawWireSphere(currentViewPos, 0.5f);
+        Gizmos.DrawWireSphere (currentViewPos, 0.5f);
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(currentViewPos, targetViewPos);
+        Gizmos.DrawLine (currentViewPos, targetViewPos);
     }
 }
-
