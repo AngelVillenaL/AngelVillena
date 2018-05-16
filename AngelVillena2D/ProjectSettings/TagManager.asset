@@ -58,3 +58,6 @@ TagManager:
   - name: arriba 4
     uniqueID: 308876379
     locked: 0
+  - name: Collider
+    uniqueID: 1906234165
+    locked: 0
