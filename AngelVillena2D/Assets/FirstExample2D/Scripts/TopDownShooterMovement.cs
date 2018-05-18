@@ -36,17 +36,17 @@ public class TopDownShooterMovement : MonoBehaviour {
 
     List<Axis> axisList = new List<Axis> ();
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Cursor.visible = false;
         spriteRenderer.color = colors[colorIndex];
         axisList.Add (new Axis ("Horizontal", KeyCode.A, KeyCode.D));
         axisList.Add (new Axis ("Vertical", KeyCode.S, KeyCode.W));
         axisList.Add (new Axis ("Arrow_H", KeyCode.LeftArrow, KeyCode.RightArrow));
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+    
+    // Update is called once per frame
+    void Update () {
 
         transform.Translate (Vector3.right * GetAxis ("Horizontal") * speed * Time.deltaTime, Space.World);
         transform.Translate (Vector3.up * GetAxis ("Vertical") * speed * Time.deltaTime, Space.World);
@@ -68,7 +68,7 @@ public class TopDownShooterMovement : MonoBehaviour {
         if (Input.GetMouseButtonDown (0)) {
             Shoot ();
         }
-	}
+    }
 
     void LateUpdate () {
         sightObject.position = (Vector3.Distance (mouseWorldPos, transform.position) >= 1) ? mouseWorldPos : transform.position + sightDirection.up;
@@ -117,13 +117,11 @@ public class TopDownShooterMovement : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D other) {
         if (other.CompareTag ("Block")) {
-            Debug.Log ("Block collision!");
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Wall")) {
-            Debug.Log("Wall!");
             wall = collision.gameObject;
         }
     }

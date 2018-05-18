@@ -37,17 +37,17 @@ public class TopDownShooterMovementWithRigidbody2D : MonoBehaviour {
 
     List<Axis> axisList = new List<Axis> ();
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Cursor.visible = false;
-        spriteRenderer.color = colors[colorIndex];
+        //spriteRenderer.color = colors[colorIndex];
         axisList.Add (new Axis ("Horizontal", KeyCode.A, KeyCode.D));
         axisList.Add (new Axis ("Vertical", KeyCode.S, KeyCode.W));
         axisList.Add (new Axis ("Arrow_H", KeyCode.LeftArrow, KeyCode.RightArrow));
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+    
+    // Update is called once per frame
+    void Update () {
         velocity = Vector3.zero;
         velocity.x = GetAxis("Horizontal") * speed;
         velocity.y = GetAxis("Vertical") * speed;
@@ -71,7 +71,7 @@ public class TopDownShooterMovementWithRigidbody2D : MonoBehaviour {
         if (Input.GetMouseButtonDown (0)) {
             Shoot ();
         }
-	}
+    }
 
     void LateUpdate () {
         sightObject.position = (Vector3.Distance (mouseWorldPos, transform.position) >= 1) ? mouseWorldPos : transform.position + sightDirection.up;
@@ -99,7 +99,7 @@ public class TopDownShooterMovementWithRigidbody2D : MonoBehaviour {
                 colorIndex = colors.Count - 1;
             }
         }
-        spriteRenderer.color = colors[colorIndex];
+        //spriteRenderer.color = colors[colorIndex];
     }
 
     int GetAxis (string axisName) {
@@ -116,7 +116,6 @@ public class TopDownShooterMovementWithRigidbody2D : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D other) {
         if (other.CompareTag ("Block")) {
-            Debug.Log ("Block collision!");
         }
     }
 
