@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Block
   - Wall
-  - Plataform
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -42,23 +42,17 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 2580523105
+    uniqueID: 720574117
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: arriba 1
-    uniqueID: 3791807775
+  - name: player
+    uniqueID: 990614465
     locked: 0
-  - name: arriba 2
-    uniqueID: 1632317719
+  - name: collider
+    uniqueID: 2135346885
     locked: 0
-  - name: arriba 3
-    uniqueID: 791445829
-    locked: 0
-  - name: arriba 4
-    uniqueID: 308876379
-    locked: 0
-  - name: Collider
-    uniqueID: 1906234165
+  - name: bullet
+    uniqueID: 685621461
     locked: 0
