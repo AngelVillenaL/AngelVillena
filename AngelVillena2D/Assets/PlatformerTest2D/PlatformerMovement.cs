@@ -8,6 +8,7 @@ public class PlatformerMovement : MonoBehaviour {
     float verticalSpeed;
     public float horizontalSpeed = 1;
     public float jumpForce = 1;
+    public float rayDetectionDistance;
 
     Vector3 leftNode { get { return transform.position - new Vector3 (0.5f, 1, 0); } }
     Vector3 rightNode { get { return transform.position + new Vector3 (0.5f, -1, 0); } }
@@ -29,11 +30,6 @@ public class PlatformerMovement : MonoBehaviour {
         RaycastHit2D sideLeft = Physics2D.Raycast (leftNode + new Vector3 (0, 0.1f, 0), Vector3.left, 0.1f);
         RaycastHit2D sideRight = Physics2D.Raycast (rightNode + new Vector3 (0, 0.1f, 0), Vector3.right, 0.1f);
 
-        if (downLeft || downRight) {
-            CheckReposition (new RaycastHit2D[] { downLeft, downRight });
-        } else { 
-            isGrounded = false; 
-        }
         float horizontalDirection = Input.GetAxis ("Horizontal");
         if (horizontalDirection < 0) {
             if (!spriteRenderer.flipX) { spriteRenderer.flipX = true; }  
@@ -49,14 +45,46 @@ public class PlatformerMovement : MonoBehaviour {
 
         if (!isGrounded) {
             verticalSpeed -= gravity * Time.deltaTime;
+           if (verticalSpeed < 0) {
+           rayDetectionDistance = 1 * -verticalSpeed * Time.deltaTime;
+           CheckVerticalClamp (new RaycastHit2D[] { downLeft, downRight });
         } else {
-            if (Input.GetKeyDown (KeyCode.Space)) {
-                verticalSpeed = jumpForce;
-                isGrounded = false;
+            if (rayDetectionDistance != 0.1f) {
+                rayDetectionDistance = 0.1f;
             }
         }
+
+    } else {
+
+        if(!downLeft && !downRight) {
+            isGrounded = false;
+        } else if (Input.GetKeyDown (KeyCode.Space)) {
+            verticalSpeed = jumpForce;
+            isGrounded = false;
+        }
+    }
+
         transform.Translate (horizontalDirection * horizontalSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime, 0);
-	}
+
+    }
+
+    void CheckVerticalClamp (RaycastHit2D [] nodeRays) {
+        foreach (RaycastHit2D ray in nodeRays) {
+            if (ray && rayDetectionDistance > ray.distance) {
+                if (ray.distance <= float.Epsilon) {
+                    float difference = leftNode.y - ray.collider.bounds.ClosestPoint (leftNode).y;
+                    Debug.Log ("Went in RD: " + ray.distance + " and DIFF: " + difference);
+                    transform.Translate (0, difference, 0);
+                } else {
+                    Debug.Log("Clamped RD: " + ray.distance);
+                transform.Translate(0, -ray.distance, 0);
+            }
+                isGrounded = true;
+                verticalSpeed = 0;
+                break;
+            }
+        }
+    }
 
     void CheckReposition (RaycastHit2D[] nodeRays) {
         Debug.Log (verticalSpeed);
