@@ -102,10 +102,10 @@ TextureImporter:
       name: claudius_battle_sprite_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 61
-        height: 127
+        x: 0
+        y: 0
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,7 +113,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d76d23d8f7b014750b6f926a988bbf04
+      spriteID: 1dbb8e8dae523554093654d47af93780
       vertices: []
       indices: 
       edges: []
@@ -122,10 +122,10 @@ TextureImporter:
       name: claudius_battle_sprite_1
       rect:
         serializedVersion: 2
-        x: 65
-        y: 1
-        width: 61
-        height: 126
+        x: 64
+        y: 0
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,7 +133,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95123a54700984e7ab79725257ce5df0
+      spriteID: 83535e052fcfadb458d2a0e307e35558
       vertices: []
       indices: 
       edges: []
@@ -142,10 +142,10 @@ TextureImporter:
       name: claudius_battle_sprite_2
       rect:
         serializedVersion: 2
-        x: 129
-        y: 1
-        width: 61
-        height: 125
+        x: 128
+        y: 0
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,7 +153,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8a7b5f0b03b64c02ab4f0a4475acf1f
+      spriteID: b4cff7fe6e8e2044ca1452ff28558942
       vertices: []
       indices: 
       edges: []
@@ -162,10 +162,10 @@ TextureImporter:
       name: claudius_battle_sprite_3
       rect:
         serializedVersion: 2
-        x: 193
-        y: 1
-        width: 61
-        height: 124
+        x: 192
+        y: 0
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,7 +173,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 655ae5dd95850401eb5fc0b713cfd1ac
+      spriteID: 4ada658dfe0d559479e2a5af293dd312
       vertices: []
       indices: 
       edges: []
@@ -182,10 +182,10 @@ TextureImporter:
       name: claudius_battle_sprite_4
       rect:
         serializedVersion: 2
-        x: 257
-        y: 1
-        width: 61
-        height: 125
+        x: 256
+        y: 0
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,7 +193,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76817f55bc7024616a19482325996701
+      spriteID: 793f841fd7e3fe349a61385aa9aafa40
       vertices: []
       indices: 
       edges: []
@@ -202,10 +202,10 @@ TextureImporter:
       name: claudius_battle_sprite_5
       rect:
         serializedVersion: 2
-        x: 321
-        y: 1
-        width: 61
-        height: 127
+        x: 320
+        y: 0
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,7 +213,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4525f9499e7cf494fb353eccd45e7e67
+      spriteID: d7615ec6814b0e44d83c5c8731d80778
       vertices: []
       indices: 
       edges: []
