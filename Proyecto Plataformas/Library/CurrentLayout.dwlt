@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 11575
+  controlID: 4737
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 11576
+  controlID: 4801
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 11577
+  controlID: 4802
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 11554
+  controlID: 4753
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 292}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 11531
+  controlID: 4738
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -461,9 +461,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 0279fbffbec0fbff8c14fcff98d8fdff66d3ffff00000000f83a0000
+    m_SelectedIDs: be120000
+    m_LastClickedID: 4798
+    m_ExpandedIDs: f0fbffff000000001c130000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -513,14 +513,14 @@ MonoBehaviour:
     height: 552
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 1813.7797716020466
+  lastFramingTime: 267.15063836126626
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.0885425, y: -1.746208, z: -0.19921875}
+    m_Target: {x: -3.2359848, y: 0.77135694, z: -0.13473414}
     speed: 2
-    m_Value: {x: 5.0885425, y: -1.746208, z: -0.19921875}
+    m_Value: {x: -3.2359848, y: 0.77135694, z: -0.13473414}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -552,9 +552,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 23.056236
+    m_Target: 15.681982
     speed: 2
-    m_Value: 23.056236
+    m_Value: 15.681982
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -628,20 +628,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\HP\Desktop\Protecto plataformas\Juego Plataformas
+  m_LastProjectPath: C:\Users\HP\Documents\GitHub\AngelVillena\Proyecto Plataformas
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fa320000
-    m_LastClickedID: 13050
-    m_ExpandedIDs: 000000005e31000000ca9a3bffffff7f
+    m_SelectedIDs: e2080000
+    m_LastClickedID: 2274
+    m_ExpandedIDs: 00000000e208000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -669,7 +669,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005e31000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000e208000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_AnimEditor: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 15066
+  m_LastSelectedObjectID: 4798
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -804,25 +804,8 @@ MonoBehaviour:
     height: 298
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ViewTransforms:
-    m_KeySerializationHelper:
-    - {fileID: 1107968631425319804, guid: 1a3b8bd6df5313b4da3c8c06892e6f12, type: 2}
-    m_ValueSerializationHelper:
-    - e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
+    m_KeySerializationHelper: []
+    m_ValueSerializationHelper: []
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 0}
   m_BreadCrumbs: []
