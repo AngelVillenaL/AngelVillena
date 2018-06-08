@@ -10,20 +10,15 @@ public class PlayerController : MonoBehaviour {
 	public float jumpPower = 6.5f;
 
 	private Rigidbody2D rb2d;
-	private Animator anim;
 	private bool jump;
 
 	// Use this for initialization
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
-		anim.SetBool("Grounded", grounded);
-
 		if (Input.GetKeyDown(KeyCode.UpArrow) && grounded){
 			jump = true;
 		}
