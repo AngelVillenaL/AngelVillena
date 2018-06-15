@@ -9,7 +9,7 @@ public class PlataformerMovement : MonoBehaviour {
 	Vector3 movement;
 	public Rigidbody rigidbody3D;
 	public float impulseValue;
-
+	public SwitchControl currentSwitch;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class PlataformerMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		movement = transform.position;
 		float horizontalDirection = Input.GetAxis("Horizontal");
 		float verticalDirection = Input.GetAxis("Vertical");
@@ -30,9 +30,26 @@ public class PlataformerMovement : MonoBehaviour {
 		if (verticalDirection !=0) {
 			movement += Vector3.forward * verticalDirection * horizontalSpeed * Time.deltaTime;
 		}
+
+		rigidbody3D.MovePosition(movement);
+	}
+	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			rigidbody3D.AddForce(Vector3.up * impulseValue, ForceMode.Impulse);
 		}
-		rigidbody3D.MovePosition(movement);
+		if (currentSwitch != null && Input.GetKeyDown (KeyCode.E)) {
+			currentSwitch.Activate ();
+		} 
+	}
+
+	void OnTriggerEnter (Collider other) {
+		if (other.CompareTag ("Switch")) {
+			currentSwitch = other.GetComponent<SwitchControl> ();
+		}
+	}
+	void OnTriggerExit (Collider other) {
+		if (other.CompareTag ("Switch")) {
+			currentSwitch = null;
+		}
 	}
 }

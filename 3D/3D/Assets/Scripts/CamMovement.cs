@@ -7,6 +7,7 @@ public class CamMovement : MonoBehaviour {
 	public Transform lookTarget;
 	public float targetHeight;
 	public Vector3 targetPoint;
+	Vector3 localPoint;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,8 +15,8 @@ public class CamMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		
-		transform.position = Vector3.MoveTowards (transform.position, lookTarget.position + targetPoint, 5f * Time.deltaTime);
+		localPoint = lookTarget.position + (lookTarget.right * targetPoint.x) + (lookTarget.up * targetPoint.y) + (lookTarget.forward * targetPoint.z);		
+		transform.position = Vector3.MoveTowards (transform.position, localPoint, 5f * Time.deltaTime);
 		transform.LookAt(lookTarget);
 
 		/*transform.LookAt (lookTarget);
@@ -31,5 +32,11 @@ public class CamMovement : MonoBehaviour {
 
 		}*/
 
-	}
+		}
+
+		void OnDrawGizmos () {
+			Gizmos.color = Color.green;
+			Gizmos.DrawSphere(localPoint, 0.5f);
+		}
+
 }
