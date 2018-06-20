@@ -6,10 +6,14 @@ public class PlataformerMovement : MonoBehaviour {
 
 
 	public float horizontalSpeed;
+	public float angularSpeed;
 	Vector3 movement;
+	Vector3 rotation;
+
 	public Rigidbody rigidbody3D;
 	public float impulseValue;
 	public SwitchControl currentSwitch;
+	public Transform MovingPlatform;
 
 	// Use this for initialization
 	void Start () {
@@ -30,8 +34,15 @@ public class PlataformerMovement : MonoBehaviour {
 		if (verticalDirection !=0) {
 			movement += Vector3.forward * verticalDirection * horizontalSpeed * Time.deltaTime;
 		}
+		if (MovingPlatform != null) {
+			lastPlatformPos = MovingPlatform..position;
+			Debug.Log ((MovingPlatform.position - lastPlatformPos).magnitude);
+			movement += (MovingPlatform.position);
+		}
 
 		rigidbody3D.MovePosition(movement);
+		rigidbody3D.MovePosition(rotation);
+
 	}
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space)) {
@@ -40,12 +51,19 @@ public class PlataformerMovement : MonoBehaviour {
 		if (currentSwitch != null && Input.GetKeyDown (KeyCode.E)) {
 			currentSwitch.Activate ();
 		} 
+		transform.Translate ( MovingPlatform.position - lastPlatformPos);
+	}
+
+	void LateUpdate () {
+		if (MovingPlatform != null) {
+			lastPlatformPos = Vector3.zero;
+		}
 	}
 
 	void OnTriggerEnter (Collider other) {
 		if (other.CompareTag ("Switch")) {
 			currentSwitch = other.GetComponent<SwitchControl> ();
-		}
+		} else if (other.CompareTag ("MovingPlatform"))
 	}
 	void OnTriggerExit (Collider other) {
 		if (other.CompareTag ("Switch")) {
