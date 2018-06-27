@@ -16,6 +16,10 @@ public class PlataformerMovement : MonoBehaviour {
     public Transform movingPlatform;
     Vector3 lastPlatformPos;
 
+    bool grounded;
+
+    List<Collider> groundCollection List<Grounded>();
+
 	// Use this for initialization
 	void Start () {
 		
@@ -72,4 +76,34 @@ public class PlataformerMovement : MonoBehaviour {
 			currentSwitch = null;
 		}
 	}
+
+	void OnCollisionEnter (Collision collision) {
+		foreach(ContactPoint contact in collision.contacts) {
+			Debug.DrawRay(contact.point, contact.normal * 5f, Color.red, 1f);
+			if(Vector3.Dot(contact.normal, Vector3.up) > 0.75f) {
+				Debug.Log("SHOULD BE GROUNDED!");
+				grounded = true;
+				groundoCollection.Add(collision.collider);
+			}
+		}
+	}
+
+	void OnCollisionStay (Collision collision) {
+		if(!groundCollection.Contains(collision.collider)) {
+		foreach(ContactPoint contact in collision.contacts) {
+			Debug.DrawRay(contact.point, contact.normal * 5f, Color.red, 1f);
+			if(Vector3.Dot(contact.normal, Vector3.up) > 0.75f) {
+				Debug.Log("SHOULD BE GROUNDED!");
+				grounded = true;
+				animatorController.SetBool ("isGrounded", grounded);
+				groundoCollection.Add(collision.collider);
+				break;
+			}
+		}
+	}
 }
+
+void OnCollisionExit (Collision collision) {
+		if (groundoCollection.Contains(collision.collider)) {
+			groundoCollection.Remove (collision.collider);
+		}
