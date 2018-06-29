@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamBehaviour : MonoBehaviour {
+public class CamMovement : MonoBehaviour {
 
     public float moveSpeed;
     public Vector3 targetDistance;

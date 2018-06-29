@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +11,7 @@ public class PlatformMovement3D : MonoBehaviour {
     Quaternion rotation;
 
     public Animator animatorController;
+    public PlayerScript playerScript;
 
     bool grounded;
 
@@ -28,6 +29,8 @@ public class PlatformMovement3D : MonoBehaviour {
         rotation = rigidbodyComponent.rotation;
         float horizontalMovement = Input.GetAxis ("Horizontal");
         float verticalMovement = Input.GetAxis ("Vertical");
+
+        animatorController.SetFloat("forwardSpeed", NormalizedMovement (verticalMovement));
 
         if (Input.GetKey(KeyCode.J)) {
             rotation *= Quaternion.Euler (Vector3.up * -angularSpeed * Time.fixedDeltaTime);
@@ -50,6 +53,11 @@ public class PlatformMovement3D : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && grounded) {
             rigidbodyComponent.AddForce (Vector3.up * 5f, ForceMode.Impulse);
         }     
+    }
+
+    float NormalizedMovement (float targetMovement) {
+        
+        return (targetMovement + 1) / 2f;
     }
 
     void OnCollisionStay (Collision collision) {
