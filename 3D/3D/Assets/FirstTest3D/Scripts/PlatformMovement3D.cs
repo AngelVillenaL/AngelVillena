@@ -32,10 +32,10 @@ public class PlatformMovement3D : MonoBehaviour {
 
         animatorController.SetFloat("forwardSpeed", NormalizedMovement (verticalMovement));
 
-        if (Input.GetKey(KeyCode.J)) {
+        if (Input.GetKey(KeyCode.Q)) {
             rotation *= Quaternion.Euler (Vector3.up * -angularSpeed * Time.fixedDeltaTime);
         }
-        if (Input.GetKey (KeyCode.K)) {
+        if (Input.GetKey (KeyCode.E)) {
             rotation *= Quaternion.Euler (Vector3.up * angularSpeed * Time.fixedDeltaTime);
         }
         if (horizontalMovement != 0) {
@@ -52,12 +52,29 @@ public class PlatformMovement3D : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.Space) && grounded) {
             rigidbodyComponent.AddForce (Vector3.up * 5f, ForceMode.Impulse);
-        }     
+            playerScript.ModifyHP (-20);
+        }     else if (Input.GetKeyDown(KeyCode.J)){
+
+        }
+    }
+
+    void Attack () {
+        playerScript.currentPower.AttackRoundAbout ();
     }
 
     float NormalizedMovement (float targetMovement) {
         
         return (targetMovement + 1) / 2f;
+    }
+
+    void OnTriggerEnter (Collider other) {
+        if (other.CompareTag("Power")) {
+            PowerBallBehaviour targetPower = other.GetComponent<PowerBallBehaviour>();
+            if (playerScript.currentPower != null || playerScript.currentPower != targetPower){
+                playerScript.currentPower = targetPower;
+                targetPower.AssignActivePlayer(this);
+            }
+        }
     }
 
     void OnCollisionStay (Collision collision) {
@@ -84,4 +101,5 @@ public class PlatformMovement3D : MonoBehaviour {
             animatorController.SetBool ("isGrounded", grounded);
         }
     }
+
 }
