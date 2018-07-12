@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyObject : MonoBehaviour {
 
-	public virtual void TakeDamage (){
-
-	}
-
+    public virtual void TakeDamage () {
+        
+    }
 }
