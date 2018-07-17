@@ -5,6 +5,6 @@ using UnityEngine;
 public class QuestActions : MonoBehaviour {
 
     public void DisableGate (int gateIndex) {
-        GameObject.Find("Gates").transform.GetChild (gateIndex).gameObject.SetActive(false);
+        GameObject.Find ("Gates").transform.GetChild (gateIndex).gameObject.SetActive (false);
     }
 }

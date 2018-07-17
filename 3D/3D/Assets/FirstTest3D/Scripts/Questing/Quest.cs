@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Quest { 
+public class Quest {
 
     public class Message {
         public string methodName;
-    public object paramValue;
+        public object paramValue;
 
         public Message (string methodName, object paramValue) {
-        this.methodName = methodName;
-        this.paramValue = paramValue;
+            this.methodName = methodName;
+            this.paramValue = paramValue;
         }
     }
 
@@ -23,8 +23,7 @@ public class Quest {
 
     public Message message;
 
-
-    public string next; 
+    public string next;
 
     public Quest (string id, string action, string type, int targetAmmount, string next = null) {
         this.id = id;
@@ -47,8 +46,9 @@ public class Quest {
         }
         return false;
     }
+
     public Quest SetMessage (string method, object param) {
-        message = new Message(method, param);
+        message = new Message (method, param);
         return this;
     }
 }

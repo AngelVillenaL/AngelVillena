@@ -5,11 +5,11 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour {
 
     static public QuestManager instance;
+    public QuestActions questActions;
 
     public List<Quest> inactive;
     public List<Quest> active;
     public List<Quest> completed;
-    public QuestActions questActions;
 
     void Awake () {
         if (instance == null) {
@@ -40,7 +40,7 @@ public class QuestManager : MonoBehaviour {
         for (int i = 0; i < active.Count; i++) {
             if (active[i].Check (action, type)) {
                 Debug.Log ("Completed " + active[i].id);
-                questActions.SendMessage(active[i].message.methodName, active[i].message.paramValue);
+                questActions.SendMessage (active[i].message.methodName, active[i].message.paramValue);
                 removal.Add (active[i]);
                 i--;
             }

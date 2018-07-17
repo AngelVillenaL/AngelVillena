@@ -32,10 +32,10 @@ public class PlatformMovement3D : MonoBehaviour {
 
         animatorController.SetFloat ("forwardSpeed", NormalizeMovement (verticalMovement));
 
-        if (Input.GetKey(KeyCode.Q)) {
+        if (Input.GetKey(KeyCode.I)) {
             rotation *= Quaternion.Euler (Vector3.up * -angularSpeed * Time.fixedDeltaTime);
         }
-        if (Input.GetKey (KeyCode.E)) {
+        if (Input.GetKey (KeyCode.O)) {
             rotation *= Quaternion.Euler (Vector3.up * angularSpeed * Time.fixedDeltaTime);
         }
         if (horizontalMovement != 0) {
@@ -53,7 +53,7 @@ public class PlatformMovement3D : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && grounded) {
             rigidbodyComponent.AddForce (Vector3.up * 5f, ForceMode.Impulse);
             playerScript.ModifyHP (-20);
-        } else if (Input.GetKeyDown (KeyCode.R) && !playerScript.currentPower.isWaiting) {
+        } else if (Input.GetKeyDown (KeyCode.J) && !playerScript.currentPower.isWaiting) {
             Attack ();
         }
     }
