@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour {
             hpBar.fillAmount = Mathf.MoveTowards (hpBar.fillAmount, playerScript.normalizedHP, 2f * delta * Time.deltaTime);
             hpBar.color = barColors.Evaluate (hpBar.fillAmount);
         }
-        if (!isLoading && Input.GetKeyDown (KeyCode.T)) {
+        if (!isLoading && Input.GetKeyDown (KeyCode.F)) {
             isLoading = true;
             StartCoroutine (RestartProcess ());
         }
