@@ -3,22 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyEntity : DamageableObject {
+    
+    public int health;
+    protected bool invulnerable = false; 
     public float colorIndex = 0f;
     public Gradient damageGradient;
     public Renderer enemyRenderer;
 
-    public int health;
-    protected bool invulnerable = false;
+    public FSM enemyStateMachine;
 
 
-    private void Start()
+    public delegate void EnemyBehaviour();
+    public event EnemyBehaviour currentBehaviour;
+
+
+    protected virtual void Start()
     {
+        enemyStateMachine = FSM.Create(2, 2);
         enemyRenderer = transform.GetChild(1).GetComponent<Renderer>();
     }
 
-    protected void setRenderColor(float colorIndex)
+    protected virtual void Update () {
+        Debug.Log("Updating parent");
+        if (currentBehaviour !=null) {
+            currentBehaviour();
+        }
+    }
+    protected void setRenderColor(float gradientPick)
     {
+        for (int i = 0; i < enemyRenderer.materials.Length; i++){
+            enemyRenderer.materials[i].color = damageGradient.Evaluate(gradientPick);
+        }
+    }
 
+    protected void SetCurrentBehaviour (EnemyBehaviour enemyBehaviour) {
+        currentBehaviour = enemyBehaviour;
+    }
+
+    protected virtual void SendEnemyEvent (int eventIndex)
+    {
+        enemyStateMachine.SendEvent(eventIndex); 
+    }
+    //OnTriggerEnter
+    protected virtual void TriggerEnterCall () {
+        //(EMPTY Call on children only)
+    }
+
+    protected virtual void TriggerExitCall()
+    {
+        //(EMPTY Call on children only)
     }
 
     public override void TakeDamage()
