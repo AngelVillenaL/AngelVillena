@@ -69,7 +69,8 @@ public class PlatformMovement3D : MonoBehaviour {
     void OnTriggerEnter (Collider other) {
         if (other.CompareTag("Power")) {
             PowerBallBehaviour targetPower = other.GetComponent<PowerBallBehaviour> ();
-            if (playerScript.currentPower != null || playerScript.currentPower != targetPower) {
+            if (playerScript.currentPower != null && playerScript.currentPower != targetPower) {
+                //Destroy (PlayerScript.currentPower.gameObject);
                 playerScript.currentPower = targetPower;
                 targetPower.AssignActivePlayer (this);
                 QuestManager.instance.Check ("obtain", targetPower.powerName);
