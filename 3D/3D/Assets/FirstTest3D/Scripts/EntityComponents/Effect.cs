@@ -2,35 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Effect  {
-
+public class Effect {
 
     protected Color color;
     protected string name;
-    public string componentName { get { return name;  }}
+    public string componentName { get { return name; }}
 
     protected Effect () {
         
     }
 
     static public Effect CreateEmpty () {
-        Effect effect = new Effect();
+        Effect effect = new Effect ();
         effect.name = "None";
         return effect;
     }
-      
+
     public Effect Apply (EnemyEntity enemyEntity) {
-        OnApply(ref enemyEntity);
-        return this;
+        if (name == "None") { return null; }
+        Effect effect;
+        OnApply (ref enemyEntity, out effect);
+        return effect;
     }
 
     public virtual bool Update (float frameDelta) {
         return true;
     }
 
-
-    public virtual void OnApply(ref EnemyEntity enemyEntity)
-    {
-        
+    protected virtual void OnApply (ref EnemyEntity enemyEntity, out Effect effect) {
+        effect = CreateEmpty ();
     }
 }
