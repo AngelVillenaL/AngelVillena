@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlatformMovement3D : MonoBehaviour {
 
@@ -52,13 +53,30 @@ public class PlatformMovement3D : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.Space) && grounded) {
             rigidbodyComponent.AddForce (Vector3.up * 5f, ForceMode.Impulse);
-            playerScript.ModifyHP (-20);
+            //playerScript.ModifyHP (-20);
         } else if (Input.GetKeyDown (KeyCode.R) && !playerScript.currentPower.isWaiting) {
             Attack ();
         }
+        if(playerScript.currentHP <= 0) {
+            int currentIndex = SceneManager.GetActiveScene().buildIndex;
+            if (currentIndex < SceneManager.sceneCountInBuildSettings -1){
+                SceneManager.LoadScene(2);
+            }
+        }
     }
 
-    void Attack() {
+	private void OnCollisionEnter(Collision collision)
+	{
+        if( collision.transform.CompareTag("Damageable")) {
+
+            rigidbodyComponent.AddForce(Vector3.up * 2.5f, ForceMode.Impulse);
+            rigidbodyComponent.AddForce(Vector3.back * 3.5f, ForceMode.Impulse);
+            playerScript.ModifyHP(-7);
+        }
+           
+	}
+
+	void Attack() {
         playerScript.currentPower.AttackRoundAbout ();
     }
 

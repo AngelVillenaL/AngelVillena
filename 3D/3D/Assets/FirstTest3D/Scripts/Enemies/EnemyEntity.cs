@@ -17,7 +17,7 @@ public class EnemyEntity : DamageableObject {
     protected Color baseColor;
     public bool changedBaseColor { get { return currentBase != baseColor; } }
 
-    public float speed = 4.5f;
+    public float speed = 4f;
 
     public FSM enemyStateMachine;
 

@@ -49,7 +49,7 @@ public class RegularEnemy : EnemyEntity {
     void Follow () {
         Debug.Log ("Following a target");
         Vector3 currentTargetDistance = planarTargetDistance - transform.position;
-        if (currentTargetDistance.magnitude >= 1.3f) {
+        if (currentTargetDistance.magnitude >= 1.555f) {
             transform.forward = (currentTargetDistance).normalized;
             transform.position += transform.forward * speed * Time.deltaTime;
         }

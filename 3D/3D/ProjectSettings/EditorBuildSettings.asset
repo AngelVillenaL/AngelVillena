@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/FirstTest3D/Scenes/Main Menu.unity
+    guid: 32430e8630a0efd41ada1e1c3607e6e8
+  - enabled: 1
+    path: Assets/FirstTest3D/Scenes/Scene02.unity
+    guid: b48228113c72743b59aa92bd527b5644
+  - enabled: 1
+    path: Assets/FirstTest3D/Scenes/GameOver.unity
+    guid: d6caee6559a11fd4ca8ad8fe5e4cbf6f
+  - enabled: 1
+    path: Assets/FirstTest3D/Scenes/Congrats.unity
+    guid: 34d368430a7b5a242a1d78dea977ba11
   m_configObjects: {}
