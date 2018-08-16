@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: bed47d0ab39020d48b7437776d2d995f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BackgroundSprite: {instanceID: 0}
+  - SlotSprite: {instanceID: 0}
+  executionOrder: 300
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

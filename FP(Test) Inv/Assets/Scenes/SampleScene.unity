@@ -2521,6 +2521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2058643121}
   - component: {fileID: 2058643122}
+  - component: {fileID: 2058643123}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -2554,6 +2555,27 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2058643120}
+--- !u!114 &2058643123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2058643120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed47d0ab39020d48b7437776d2d995f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BackgroundSprite: {fileID: 0}
+  SlotSprite: {fileID: 0}
+  Rows: 3
+  Columns: 3
+  SlotSize: 100
+  SpacingBetweenSlots: 30
+  TopBottomMargin: 0
+  RightLeftMargin: 0
+  TopBottomSpace: 100
+  RightLeftSpace: 100
 --- !u!1 &2097167303
 GameObject:
   m_ObjectHideFlags: 0
