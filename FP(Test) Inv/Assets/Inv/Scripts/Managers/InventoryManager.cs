@@ -14,9 +14,9 @@ public class InventoryManager : MonoBehaviour
     public Sprite BackgroundSprite;
     public Sprite SlotSprite;
 
-    Transform X1Y1;//first slot in first row
-    Transform X2Y1;//second slot in first row
-    Transform X1Y2;//first slot in second row
+    Transform X1Y1;
+    Transform X2Y1;
+    Transform X1Y2;
 
     Transform ItemsParent;
     Transform SlotsParent;
